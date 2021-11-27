@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <script src="https://cdn.socket.io/4.2.0/socket.io.min.js" integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="messages"></div>
+
+    <input type="text" id="newmessage" name="newmessage">
+    <button type="submit" name="messagebtn" id="messagebtn" onclick="messagesend()">Send</button>
+
+    <script>
+      const socket = io("ws://localhost:7500");
+
+      function messagesend(){
+        socket.emit('message', document.getElementById("newmessage").value);
+      };
+
+      socket.on("connect", () => {
+
+        // either with send()
+        socket.send("Enter your message on the chatbox below!");
+
+        // or with emit() and custom event names
+        socket.emit("greetings", "Client connected");
+
+
+      });
+
+      // handle the event sent with socket.send()
+      socket.on("message", (data) => {
+          $("#messages").append(`${data}<br>`);
+        //console.log(data);
+      });
+
+      // socket.on("greetings", (data) => {
+      //   console.log(data);
+      // });
+
+    </script>
+  </body>
+</html>
