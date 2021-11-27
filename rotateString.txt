@@ -1,0 +1,16 @@
+function rotateString(n , d)
+{
+const len = n.length;
+const j = len - 1;
+
+for (let i = 0; i < d; i++) {
+	const empty = n[j];
+	n = n.slice(0, -1);
+	n = empty+n;
+	
+}
+  console.log(n);
+}
+rotateString("ABCDEF" , 1);
+rotateString("ABCDEF" , 2);
+rotateString("ABCDEF" , 3);
