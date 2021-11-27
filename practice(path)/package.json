@@ -1,0 +1,19 @@
+{
+  "name": "mern-11",
+  "version": "1.0.0",
+  "description": "This is to learn how npm works",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "author": "Code Girls",
+  "repository": {
+    "type": "git",
+    "url": "github.com/TKirmani/mern-1.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
